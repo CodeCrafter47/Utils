@@ -17,6 +17,16 @@
             <artifactId>Factions</artifactId>
             <version>1.6.9.5-U0.1.17</version>
             <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>net.ess3</groupId>
+                    <artifactId>EssentialsX</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>net.ess3</groupId>
+                    <artifactId>EssentialsXChat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 </project>
