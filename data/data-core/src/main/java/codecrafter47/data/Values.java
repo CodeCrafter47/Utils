@@ -7,15 +7,38 @@ import java.util.UUID;
 public class Values {
     private static Map<String, Value<?>> idToValueMap = new HashMap<>();
 
-    protected static <T> Value<T> registerValue(String id){
+    protected static <T> Value<T> registerValue(String id) {
         Value<T> value = Value.create(id);
         idToValueMap.put(value.getId(), value);
         return value;
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> Value<T> getValue(String id){
+    public static <T> Value<T> getValue(String id) {
         return (Value<T>) idToValueMap.get(id);
+    }
+
+    static {
+        // cause all classes to load
+        c(Player.Minecraft.class);
+        c(Player.Bukkit.class);
+        c(Player.Vault.class);
+        c(Player.VanishNoPacket.class);
+        c(Player.PlayerPoints.class);
+        c(Player.Factions.class);
+        c(Player.SuperVanish.class);
+        c(Player.SimpleClans.class);
+        c(Player.Essentials.class);
+        c(Server.Vault.class);
+    }
+
+    private static void c(Class<?> c) {
+        try {
+            // force load class
+            Class.forName(c.getName());
+        } catch (Throwable ignored) {
+
+        }
     }
 
     public static class Player {
