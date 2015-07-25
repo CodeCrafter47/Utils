@@ -11,6 +11,11 @@
 
     <artifactId>chat-utils</artifactId>
 
+    <properties>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>net.md-5</groupId>
