@@ -94,6 +94,9 @@ public class Values {
             public final static Value<String> ClanName = registerValue("simpleclans:clanname");
             public final static Value<Integer> ClanMembers = registerValue("simpleclans:clanmembers");
             public final static Value<Integer> OnlineClanMembers = registerValue("simpleclans:onlineclanmembers");
+            public final static Value<String> ClanTag = registerValue("simpleclans:clantag");
+            public final static Value<String> ClanTagLabel = registerValue("simpleclans:clantaglabel");
+            public final static Value<String> ClanColorTag = registerValue("simpleclans:clancolortag");
         }
 
         public static class Essentials {

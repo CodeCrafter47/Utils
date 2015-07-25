@@ -5,9 +5,7 @@ import codecrafter47.data.Values;
 import codecrafter47.data.essentials.EssentialsIsVanishedProvider;
 import codecrafter47.data.factions275.*;
 import codecrafter47.data.playerpoints.PlayerPointsProvider;
-import codecrafter47.data.simpleclans.SimpleClansClanNameProvider;
-import codecrafter47.data.simpleclans.SimpleClansMembersProvider;
-import codecrafter47.data.simpleclans.SimpleClansOnlineClanMembersProvider;
+import codecrafter47.data.simpleclans.*;
 import codecrafter47.data.supervanish.SuperVanishIsVanishedProvider;
 import codecrafter47.data.vanishnopacket.VanishNoPacketIsVanishedProvider;
 import codecrafter47.data.vault.VaultBalanceProvider;
@@ -92,6 +90,9 @@ public class PlayerDataAggregator extends DataAggregator<Player> {
             bind(Values.Player.SimpleClans.ClanName, new SimpleClansClanNameProvider());
             bind(Values.Player.SimpleClans.ClanMembers, new SimpleClansMembersProvider());
             bind(Values.Player.SimpleClans.OnlineClanMembers, new SimpleClansOnlineClanMembersProvider());
+            bind(Values.Player.SimpleClans.ClanTag, new SimpleClansClanTagProvider());
+            bind(Values.Player.SimpleClans.ClanTagLabel, new SimpleClansClanTagLabelProvider());
+            bind(Values.Player.SimpleClans.ClanColorTag, new SimpleClansClanColorTagProvider());
         }
 
         if(Bukkit.getPluginManager().getPlugin("Essentials") != null) {
