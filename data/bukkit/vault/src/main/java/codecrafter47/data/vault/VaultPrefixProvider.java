@@ -10,9 +10,11 @@ import java.util.function.Function;
 public class VaultPrefixProvider implements Function<Player, String> {
     public String apply(Player player) {
         RegisteredServiceProvider<Chat> rsp = Bukkit.getServicesManager().getRegistration(Chat.class);
-        Chat chat = rsp.getProvider();
-        if(chat != null){
-            return chat.getPlayerPrefix(player);
+        if (rsp != null) {
+            Chat chat = rsp.getProvider();
+            if (chat != null) {
+                return chat.getPlayerPrefix(player);
+            }
         }
         return null;
     }

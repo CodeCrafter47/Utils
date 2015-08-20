@@ -10,9 +10,11 @@ import java.util.function.Function;
 public class VaultBalanceProvider implements Function<Player, Double>{
     public Double apply(Player player) {
         RegisteredServiceProvider<Economy> rsp = Bukkit.getServicesManager().getRegistration(Economy.class);
-        Economy economy = rsp.getProvider();
-        if(economy != null){
-            return economy.getBalance(player);
+        if (rsp != null) {
+            Economy economy = rsp.getProvider();
+            if (economy != null) {
+                return economy.getBalance(player);
+            }
         }
         return null;
     }
