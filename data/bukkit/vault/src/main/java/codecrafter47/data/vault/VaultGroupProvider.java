@@ -13,7 +13,11 @@ public class VaultGroupProvider implements Function<Player, String> {
         if (rsp != null) {
             Permission permission = rsp.getProvider();
             if (permission != null) {
-                return permission.getPrimaryGroup(player);
+                try {
+                    return permission.getPrimaryGroup(player);
+                } catch (UnsupportedOperationException ignored) {
+                    // Permission plugin doesn't support groups
+                }
             }
         }
         return null;
