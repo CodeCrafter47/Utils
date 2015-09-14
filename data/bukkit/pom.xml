@@ -25,7 +25,6 @@
         <module>supervanish</module>
         <module>simpleclans</module>
         <module>essentials</module>
-        <module>essentialsx</module>
     </modules>
 
     <dependencies>
