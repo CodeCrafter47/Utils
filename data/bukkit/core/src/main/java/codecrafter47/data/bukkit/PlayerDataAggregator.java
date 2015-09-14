@@ -15,15 +15,18 @@ import codecrafter47.data.vault.VaultSuffixProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import javax.inject.Inject;
 import java.util.logging.Logger;
 
 public class PlayerDataAggregator extends DataAggregator<Player> {
+    private final Plugin plugin;
 
     @Inject
-    public PlayerDataAggregator(Logger logger) {
-        super(logger);
+    public PlayerDataAggregator(Plugin plugin) {
+        super(plugin.getLogger());
+        this.plugin = plugin;
         init();
     }
 
@@ -44,7 +47,7 @@ public class PlayerDataAggregator extends DataAggregator<Player> {
         bind(Values.Player.Bukkit.World, player -> player.getWorld().getName());
 
         if(Bukkit.getPluginManager().getPlugin("Vault") != null) {
-            bind(Values.Player.Vault.Balance, new VaultBalanceProvider());
+            bind(Values.Player.Vault.Balance, new VaultBalanceProvider(plugin));
             bind(Values.Player.Vault.PermissionGroup, new VaultGroupProvider());
             bind(Values.Player.Vault.Prefix, new VaultPrefixProvider());
             bind(Values.Player.Vault.Suffix, new VaultSuffixProvider());
