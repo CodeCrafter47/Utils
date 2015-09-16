@@ -12,7 +12,7 @@ public class VaultGroupProvider implements Function<Player, String> {
         RegisteredServiceProvider<Permission> rsp = Bukkit.getServicesManager().getRegistration(Permission.class);
         if (rsp != null) {
             Permission permission = rsp.getProvider();
-            if (permission != null) {
+            if (permission != null && permission.isEnabled()) {
                 try {
                     return permission.getPrimaryGroup(player);
                 } catch (UnsupportedOperationException ignored) {
