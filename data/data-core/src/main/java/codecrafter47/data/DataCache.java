@@ -19,4 +19,8 @@ public class DataCache {
     public <T> Optional<T> getValue(Value<T> value) {
         return Optional.ofNullable((T) cache.get(value));
     }
+
+    public Map<Value<?>, Object> getMap() {
+        return cache;
+    }
 }
