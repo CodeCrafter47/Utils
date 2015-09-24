@@ -11,7 +11,7 @@ public class VaultCurrencyNameSingularProvider implements Function<Server, Strin
         RegisteredServiceProvider<Economy> rsp = server.getServicesManager().getRegistration(Economy.class);
         if (rsp != null) {
             Economy economy = rsp.getProvider();
-            if (economy != null) {
+            if (economy != null && economy.isEnabled()) {
                 return economy.currencyNameSingular();
             }
         }

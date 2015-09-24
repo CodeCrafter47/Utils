@@ -12,7 +12,7 @@ public class VaultSuffixProvider implements Function<Player, String> {
         RegisteredServiceProvider<Chat> rsp = Bukkit.getServicesManager().getRegistration(Chat.class);
         if (rsp != null) {
             Chat chat = rsp.getProvider();
-            if (chat != null) {
+            if (chat != null && chat.isEnabled()) {
                 return chat.getPlayerSuffix(player);
             }
         }

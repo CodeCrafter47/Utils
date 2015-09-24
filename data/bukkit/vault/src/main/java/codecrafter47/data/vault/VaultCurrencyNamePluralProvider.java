@@ -11,7 +11,7 @@ public class VaultCurrencyNamePluralProvider implements Function<Server, String>
         RegisteredServiceProvider<Economy> rsp = server.getServicesManager().getRegistration(Economy.class);
         if (rsp != null) {
             Economy economy = rsp.getProvider();
-            if (economy != null) {
+            if (economy != null && economy.isEnabled()) {
                 return economy.currencyNamePlural();
             }
         }
