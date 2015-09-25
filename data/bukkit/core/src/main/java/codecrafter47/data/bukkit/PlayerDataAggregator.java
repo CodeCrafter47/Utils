@@ -16,6 +16,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.scoreboard.Team;
 
 import javax.inject.Inject;
 import java.util.logging.Logger;
@@ -41,6 +42,10 @@ public class PlayerDataAggregator extends DataAggregator<Player> {
         bind(Values.Player.Minecraft.PosX, player -> player.getLocation().getX());
         bind(Values.Player.Minecraft.PosY, player -> player.getLocation().getY());
         bind(Values.Player.Minecraft.PosZ, player -> player.getLocation().getZ());
+        bind(Values.Player.Minecraft.Team, player -> {
+            Team team = player.getScoreboard().getPlayerTeam(player);
+            return team != null ? team.getName() : null;
+        });
 
         bind(Values.Player.Bukkit.DisplayName, Player::getDisplayName);
         bind(Values.Player.Bukkit.PlayerListName, Player::getPlayerListName);

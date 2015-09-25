@@ -53,6 +53,7 @@ public class Values {
             public final static Value<Double> PosX = registerValue("minecraft:posx");
             public final static Value<Double> PosY = registerValue("minecraft:posy");
             public final static Value<Double> PosZ = registerValue("minecraft:posz");
+            public final static Value<String> Team = registerValue("minecraft:team");
         }
 
         public static class Bukkit {
