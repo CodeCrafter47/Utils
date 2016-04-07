@@ -21,6 +21,11 @@
         <module>bungeecord-ping</module>
     </modules>
 
+    <scm>
+        <developerConnection>scm:git:https://github.com/CodeCrafter47/Utils</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
     <distributionManagement>
         <repository>
             <id>deployment</id>
