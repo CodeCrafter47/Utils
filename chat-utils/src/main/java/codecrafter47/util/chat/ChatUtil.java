@@ -6,7 +6,6 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 
-import javax.inject.Inject;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,8 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * An implementation of ChatParser featuring a syntax similar to bbcode which makes it easy to create interactive chat
- * messages.
+ * Utility class providing a chat formatting syntax similar to bbcode.
  *
  * Details:
  * For example [b]this is bold[/b], [i]this is italic[/i], [u]this is underlined[/u] and [s]this is crossed out[/s].
@@ -35,7 +33,7 @@ import java.util.regex.Pattern;
  *
  * Vanilla color codes still work and can be mixed with the [color=..] and other formatting tags without problems.
  */
-public class BBCodeChatParser implements ChatParser {
+public class ChatUtil {
     private static final Pattern pattern = Pattern.compile("(?is)(?=\\n)|(?:[&\u00A7](?<color>[0-9A-FK-OR]))|" +
             "(?:\\[(?<tag>/?(?:b|i|u|s|nocolor|nobbcode)|(?:url|command|hover|suggest|color)=(?<value>(?:(?:[^]\\[]*)\\[(?:[^]\\[]*)\\])*(?:[^]\\[]*))|/(?:url|command|hover|suggest|color))\\])|" +
             "(?:\\[(?<implicitTag>url|command|suggest)\\](?=(?<implicitValue>.*?)\\[/\\k<implicitTag>\\]))");
@@ -43,18 +41,9 @@ public class BBCodeChatParser implements ChatParser {
     private static final Pattern strip_bbcode_pattern = Pattern.compile("(?is)(?:\\[(?<tag>/?(?:b|i|u|s|nocolor|nobbcode)|(?:url|command|hover|suggest|color)=(?<value>(?:(?:[^]\\[]*)\\[(?:[^]\\[]*)\\])*(?:[^]\\[]*))|/(?:url|command|hover|suggest|color))\\])|" +
             "(?:\\[(?<implicitTag>url|command|suggest)\\](?=(?<implicitValue>.*?)\\[/\\k<implicitTag>\\]))");
 
-    private final Logger logger;
+    private static final Logger logger = Logger.getLogger("Minecraft");
 
-    @Inject
-    public BBCodeChatParser(Logger logger) {
-        this.logger = logger;
-    }
-
-    public BBCodeChatParser() {
-        this(Logger.getLogger(BBCodeChatParser.class.getName()));
-    }
-
-    public BaseComponent[] parse(String text) {
+    public static BaseComponent[] parseBBCode(String text) {
         Matcher matcher = pattern.matcher(text);
         TextComponent current = new TextComponent();
         List<BaseComponent> components = new LinkedList<>();
@@ -262,7 +251,7 @@ public class BBCodeChatParser implements ChatParser {
                 }
                 // [hover=....]...[/hover]
                 if (group_tag.matches("(?is)^hover=.*$")) {
-                    BaseComponent[] components1 = parse(group_value);
+                    BaseComponent[] components1 = parseBBCode(group_value);
                     if (!hoverEventDeque.isEmpty()) {
                         // why is there no apache commons lib in bungee
                         BaseComponent[] components2 = hoverEventDeque.getLast().getValue();
