@@ -20,8 +20,8 @@ import java.util.regex.Pattern;
  *
  * Details:
  * For example [b]this is bold[/b], [i]this is italic[/i], [u]this is underlined[/u] and [s]this is crossed out[/s].
- * The difference between the above and making something &lbold&r the vanilla way is, that the above makes all the
- * enclosed text bold, while &b makes bold everything until reaching the next color code.
+ * The difference between the above and making something &amp;lbold&amp;r the vanilla way is, that the above makes all the
+ * enclosed text bold, while &amp;b makes bold everything until reaching the next color code.
  * Same for [color=...]
  *
  * How links will work is easy to guess, e.g. it's just [url]spigotmc.org[/url] or [url=spigotmc.org]click here[/url].
