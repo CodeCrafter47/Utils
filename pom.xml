@@ -15,7 +15,6 @@
 
     <modules>
         <module>chat-utils</module>
-        <module>data</module>
         <module>bungeecord-ping</module>
     </modules>
 
